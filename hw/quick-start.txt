@@ -1,0 +1,5 @@
+## Hardware Setup
+
+1. Clone the repo
+2. Open `hw/acquisition.DsnWrk` in Altium Designer as a Project Group
+3. All libraries are linked via relative paths — no additional setup required
