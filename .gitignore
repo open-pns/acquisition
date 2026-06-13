@@ -67,3 +67,33 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Altium generated folders
+
+Project Outputs for*/
+History/
+\_\_Previews/
+Backup*/
+\_AutoSave\*/
+
+# Altium temp and lock files
+
+_.~_
+_.Rpt
+_.RptHar
+_.REP
+_.CBT
+_.Drc
+_.apr
+_.ap#
+_.LOG
+\*.lck
+
+# Zip files
+
+\*.zip
+
+# Windows
+
+Thumbs.db
+desktop.ini
