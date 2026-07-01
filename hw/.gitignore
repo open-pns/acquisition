@@ -1,0 +1,28 @@
+# Altium generated folders
+Project Outputs for*/
+History/
+__Previews/
+Backup*/
+_AutoSave*/
+
+# Altium temp and lock files
+*.~*
+*.Rpt
+*.RptHar
+*.REP
+*.CBT
+*.Drc
+*.apr
+*.ap#
+*.LOG
+*.lck
+
+# Altium GUID workspace files
+{*}
+
+# Zip files
+*.zip
+
+# Windows
+Thumbs.db
+desktop.ini
