@@ -1,5 +1,5 @@
 # pns-acquisition
-
+WIP - dual pcb arm band for multi channel semg acquisition
 
 ## License
 Firmware (`fw/`) — MIT  
