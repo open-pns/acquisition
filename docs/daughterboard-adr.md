@@ -47,6 +47,14 @@ MOSI_AFE    |DIN         |31
 MISO_AFE    |DOUT        |43
 --- 
 
+7-20-26 -ew
+
+initilized PCB file - missing footprint to adc
+
+7-22-2026 -ew
+
+Recieved devboard and breakout for IMU
+
 TODO: 
 - update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
 - figure out how to make the netlabels not upside down
