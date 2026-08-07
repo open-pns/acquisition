@@ -28,9 +28,9 @@
 | Date | Milestone |
 |------|-----------|
 | Jul 26 | **Layout begins** |
-| Jul 26–Aug 1 | **Daughter board layout complete** |
-| Aug 1–Aug 7 | **Main board layout complete** |
-| Aug 8 | **Gerbers submitted + BOM ordered** |
+| Jul 26–Aug 7 | **Daughter board layout complete** |
+| Aug 1–Aug 11 | **Main board layout complete** |
+| Aug 12 | **Gerbers submitted + BOM ordered** |
  
 ---
  
@@ -39,8 +39,8 @@
 | Date | Milestone |
 |------|-----------|
 | Jul 26 | **Prototype kit ordered** |
-| Aug 1 | **Firmware scaffolding complete** |
-| Aug 1–8 | **BMI270 prototype validation** |
+| Aug 25 | **Firmware scaffolding complete** |
+| Aug 30 | **BMI270 prototype validation** |
  
 ---
  
@@ -48,11 +48,8 @@
  
 | Date | Milestone |
 |------|-----------|
-| Aug 15–20 | **PCBs arrive** |
-| Aug 20 | **Power section verified** |
-| Aug 25 | **MCU bring-up** |
-| Sep 1 | **AFE bring-up** |
-| Sep 8 | **Signal chain validated** |
+| Aug 30 | **PCBs arrive** |
+| Sep 4 | **On device firmware** |
 | Sep 15 | **Streaming pipeline complete** |
 | Sep 15–22 | **Polish & documentation** |
 | Sep 22 | **Presentation target** |
