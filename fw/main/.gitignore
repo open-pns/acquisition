@@ -1,0 +1,22 @@
+# editors
+*.swp
+*~
+
+# build
+/build*/
+
+# macOS
+.DS_Store
+
+# Zephyr / nRF Connect
+twister-out*/
+.west/
+*.hex
+*.bin
+*.elf
+*.map
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/

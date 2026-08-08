@@ -1,0 +1,6 @@
+{
+    "nrf-connect.applications": [
+        "${workspaceFolder}/main"
+    ],
+    "cmake.sourceDirectory": "/Users/elliotwyrick/dev/acquisition/fw/blinky"
+}
