@@ -9,7 +9,7 @@ HW:
 - MB : schematic v1 complete, in need of revision
 
 <img width="1401" height="723" alt="image" src="https://github.com/user-attachments/assets/5494cb22-1315-4ac1-acc8-8f854341c15d" />
-DB PCB Progress
+DB PCB Progress (8-9-26)
 
 
 FW:
