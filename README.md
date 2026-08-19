@@ -10,12 +10,13 @@ HW:
 - DB : schematic complete, layout underway
 - MB : schematic v1 complete, in need of revision
 
-<img width="1367" height="702" alt="image" src="https://github.com/user-attachments/assets/42d0542c-ebda-44e3-b302-14199e9aebbb" />
+<img width="1156" height="601" alt="image" src="https://github.com/user-attachments/assets/e7c1ee46-5ad9-4e23-bc48-e324c2a28bf4" />
+
 
 DB PCB Progress (8-11-26)
-- some pads need to be swapped for vias
 - no ground pour atm - need different planes for analog and digital
 - would like to move signal lines out from under IC to reduce interference risk
+- need to confirm power rail is within spec (max current is 1.2A)
 
 FW:
 - devboard: flashing + building works, no progress on actual functionality
