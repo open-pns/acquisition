@@ -55,6 +55,19 @@ initilized PCB file - missing footprint to adc
 
 Recieved devboard and breakout for IMU
 
+8-19-2026 -ew
+
+Updated DB AFE to include LPF with differential cap, and added common mode cap.
+
+From ADS1298 datasheet:
+<img width="957" height="817" alt="image" src="https://github.com/user-attachments/assets/d09b4389-92da-47c2-8915-2c260e7eb1b7" />
+<img width="894" height="1094" alt="image" src="https://github.com/user-attachments/assets/3367d475-ce9a-4e9b-b1cc-07b0f4e261fa" />
+
+Diff cap (LPF) calculated with a cutoff of 1.7 kHz to be 4.7 nF with a 10kohm resistor
+Common mode cap (Ccm) was made ~10x smaller  - 270 pF.
+
+Note that these were not chosen to adhere to image 2's highlighted criteria. I should go back and check/update the specific cap type before ordering
+
 TODO: 
 - update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
 - figure out how to make the netlabels not upside down
