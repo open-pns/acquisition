@@ -1,8 +1,23 @@
 ## TODO:
 ---
 - update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
+- Update filter and Ccm Caps based on datasheets criteria
 
+## 8-19-2026 -ew
+Some thoughts on the current state of the board
+<img width="2906" height="1497" alt="image" src="https://github.com/user-attachments/assets/f8b02241-8418-4b27-831e-5ab2a7fe1a92" />
 
+1. Biosignal lines running under the IC are hard stop problems. These should be considered non functional in their current state
+2. Rerouting the signal lines out from under the IC is difficult. They could be routed around the top, but the signal lines get long, which is bad due to EMF concerns
+3. This IC's pin locations are clearly not optimized for a middle of the board application. Ideal application is something like:
+[electrodes] -> [IC] -> data connect
+4. Analog lines on the right side of the board need better isolation from data lines. ""
+5. board is 6 cm x 3 cm. Expansion to ~6 cm x 5 cm could solve a lot of these problems by giving the IC some breathing room. Layout might look silly though
+
+<img width="1577" height="565" alt="image" src="https://github.com/user-attachments/assets/de7ba57f-2a35-4bd1-9b80-25bb2ba2b451" />
+I generally like A, digital lines could get messy but I would rather deal with messy digital lines than messy biosignal lines. I am not sure about B -- B.1 gets pretty long. I worry that those high impedance lines could act as antennas.
+
+I have ordered [Medical Instrumentation: Application and Design 4e](https://a.co/d/0hpU3cl9) for further research on best practices for carrying biosignals
 ## 8-18-2026 -ew
 
 Updated DB AFE to include LPF with differential cap, and added common mode cap.
