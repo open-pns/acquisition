@@ -14,7 +14,7 @@ HW:
 
 
 
-DB PCB Progress (8-18-26)
+DB PCB Progress (8-18-26) - see [docs/db/daughterboard-adr.md](./docs/db/daughterboard-adr.md) for more details
 - no ground pour atm - need different planes for analog and digital
 - would like to move signal lines out from under IC to reduce interference risk
 - need to confirm power rail is within spec (max current is 1.2A)
