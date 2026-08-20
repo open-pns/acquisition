@@ -1,28 +1,30 @@
-6-24-26 -ew
-updaing pins:
-Pin             |Update
---|--
-VCAP1           |22µF cap to AVSS — required
-VCAP2           |1µF cap to AVSS — required
-VCAP3           |1µF cap to AVSS — required
-VCAP4           |1µF cap to AVSS — required
-CLKSEL          |Tie high (DVDD) for internal oscillator, or low for external clockDAISY_INTie to DGND if not using daisy chain
-RESV1           |Must tie to DGND per datasheet
-PWDN            |Active low — tie high to DVDD through resistor, or control from MCU
-RESET           |Active low — pull high, control from MCU via the cable connector
-START           |Control from MCU via cable connector
-RESP_MODP/N     |Leave floating — these are ADS129xR only, not needed on ADS1298
-GPIO1-          |4Tie to DGND if unused
+TODO: 
+- update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
+- figure out how to make the netlabels not upside down
 
-setting clocksel high for now. may need to change to sync multiple adcs
+8-19-2026 -ew
 
-further considerations:
+Updated DB AFE to include LPF with differential cap, and added common mode cap.
 
-after deciding to include and ADC on the mother board to make biosignal transmission more reliable, look into AFE159RP4. Might be lower power with 4 channels. newer chip.
-https://www.ti.com/product/AFE159RP4
+From ADS1298 datasheet:
+<img width="957" height="817" alt="image" src="https://github.com/user-attachments/assets/d09b4389-92da-47c2-8915-2c260e7eb1b7" />
+<img width="894" height="1094" alt="image" src="https://github.com/user-attachments/assets/3367d475-ce9a-4e9b-b1cc-07b0f4e261fa" />
+
+Diff cap (LPF) calculated with a cutoff of 1.7 kHz to be 4.7 nF with a 10kohm resistor
+Common mode cap (Ccm) was made ~10x smaller  - 270 pF.
+
+Note that these were not chosen to adhere to image 2's highlighted criteria. I should go back and check/update the specific cap type before ordering
+
+7-22-2026 -ew
+
+Recieved devboard and breakout for IMU
+
+7-20-26 -ew
+
+initilized PCB file - missing footprint to adc
 
 6-30-26 -ew
-- Added 14 pin FFC header to daughterboard schematic (Molex 52793-1470 — 14 pos, 1.0mm pitch, Right Angle). arranged pins so pin 1 & 14 are gnd to protect against open loop problems while connecting. 
+- Added 14 pin FFC header to daughterboard schematic (Molex 52793-1470 — 14 pos, 1.0mm pitch, Right Angle). arranged pins so pin 1 & 14 are gnd to protect against open loop problems while connecting[...]
 - Switched from ports to netlabels for main schematic net
 Wired inputs/outputs from FFC header as follows:
 ---
@@ -47,27 +49,25 @@ MOSI_AFE    |DIN         |31
 MISO_AFE    |DOUT        |43
 --- 
 
-7-20-26 -ew
+6-24-26 -ew
+updaing pins:
+Pin             |Update
+--|--
+VCAP1           |22µF cap to AVSS — required
+VCAP2           |1µF cap to AVSS — required
+VCAP3           |1µF cap to AVSS — required
+VCAP4           |1µF cap to AVSS — required
+CLKSEL          |Tie high (DVDD) for internal oscillator, or low for external clockDAISY_INTie to DGND if not using daisy chain
+RESV1           |Must tie to DGND per datasheet
+PWDN            |Active low — tie high to DVDD through resistor, or control from MCU
+RESET           |Active low — pull high, control from MCU via the cable connector
+START           |Control from MCU via cable connector
+RESP_MODP/N     |Leave floating — these are ADS129xR only, not needed on ADS1298
+GPIO1-          |4Tie to DGND if unused
 
-initilized PCB file - missing footprint to adc
+setting clocksel high for now. may need to change to sync multiple adcs
 
-7-22-2026 -ew
+further considerations:
 
-Recieved devboard and breakout for IMU
-
-8-19-2026 -ew
-
-Updated DB AFE to include LPF with differential cap, and added common mode cap.
-
-From ADS1298 datasheet:
-<img width="957" height="817" alt="image" src="https://github.com/user-attachments/assets/d09b4389-92da-47c2-8915-2c260e7eb1b7" />
-<img width="894" height="1094" alt="image" src="https://github.com/user-attachments/assets/3367d475-ce9a-4e9b-b1cc-07b0f4e261fa" />
-
-Diff cap (LPF) calculated with a cutoff of 1.7 kHz to be 4.7 nF with a 10kohm resistor
-Common mode cap (Ccm) was made ~10x smaller  - 270 pF.
-
-Note that these were not chosen to adhere to image 2's highlighted criteria. I should go back and check/update the specific cap type before ordering
-
-TODO: 
-- update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
-- figure out how to make the netlabels not upside down
+after deciding to include and ADC on the mother board to make biosignal transmission more reliable, look into AFE159RP4. Might be lower power with 4 channels. newer chip.
+https://www.ti.com/product/AFE159RP4
