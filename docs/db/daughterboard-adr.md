@@ -1,8 +1,9 @@
-TODO: 
+## TODO:
+---
 - update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
-- figure out how to make the netlabels not upside down
 
-8-19-2026 -ew
+
+## 8-18-2026 -ew
 
 Updated DB AFE to include LPF with differential cap, and added common mode cap.
 
@@ -15,15 +16,15 @@ Common mode cap (Ccm) was made ~10x smaller  - 270 pF.
 
 Note that these were not chosen to adhere to image 2's highlighted criteria. I should go back and check/update the specific cap type before ordering
 
-7-22-2026 -ew
+## 7-22-2026 -ew
 
 Recieved devboard and breakout for IMU
 
-7-20-26 -ew
+## 7-20-26 -ew
 
 initilized PCB file - missing footprint to adc
 
-6-30-26 -ew
+## 6-30-26 -ew
 - Added 14 pin FFC header to daughterboard schematic (Molex 52793-1470 — 14 pos, 1.0mm pitch, Right Angle). arranged pins so pin 1 & 14 are gnd to protect against open loop problems while connecting[...]
 - Switched from ports to netlabels for main schematic net
 Wired inputs/outputs from FFC header as follows:
@@ -49,7 +50,7 @@ MOSI_AFE    |DIN         |31
 MISO_AFE    |DOUT        |43
 --- 
 
-6-24-26 -ew
+## 6-24-26 -ew
 updaing pins:
 Pin             |Update
 --|--
