@@ -1,28 +1,49 @@
-6-24-26 -ew
-updaing pins:
-Pin             |Update
---|--
-VCAP1           |22µF cap to AVSS — required
-VCAP2           |1µF cap to AVSS — required
-VCAP3           |1µF cap to AVSS — required
-VCAP4           |1µF cap to AVSS — required
-CLKSEL          |Tie high (DVDD) for internal oscillator, or low for external clockDAISY_INTie to DGND if not using daisy chain
-RESV1           |Must tie to DGND per datasheet
-PWDN            |Active low — tie high to DVDD through resistor, or control from MCU
-RESET           |Active low — pull high, control from MCU via the cable connector
-START           |Control from MCU via cable connector
-RESP_MODP/N     |Leave floating — these are ADS129xR only, not needed on ADS1298
-GPIO1-          |4Tie to DGND if unused
+## TODO:
+---
+- update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
+- Update filter and Ccm Caps based on datasheets criteria
 
-setting clocksel high for now. may need to change to sync multiple adcs
+## 8-22-2026 -ew
+- Received [medical instrumentation application and design 4th edition](https://www.amazon.com/Medical-Instrumentation-Application-John-Webster/dp/0471676004) 
+- Received [Domed snap electrodes with Ag/AgCl coating](https://datwyler.com/company/innovation/softpulse/products/) from Datwyler (Thank you Datwyler for sending these over!!)
+## 8-19-2026 -ew
+Some thoughts on the current state of the board
+<img width="2906" height="1497" alt="image" src="https://github.com/user-attachments/assets/f8b02241-8418-4b27-831e-5ab2a7fe1a92" />
 
-further considerations:
+1. Biosignal lines running under the IC are hard stop problems. These should be considered non functional in their current state
+2. Rerouting the signal lines out from under the IC is difficult. They could be routed around the top, but the signal lines get long, which is bad due to EMF concerns
+3. This IC's pin locations are clearly not optimized for a middle of the board application. Ideal application is something like:
+[electrodes] -> [IC] -> data connect
+4. Analog lines on the right side of the board need better isolation from data lines. ""
+5. board is 6 cm x 3 cm. Expansion to ~6 cm x 5 cm could solve a lot of these problems by giving the IC some breathing room. Layout might look silly though
 
-after deciding to include and ADC on the mother board to make biosignal transmission more reliable, look into AFE159RP4. Might be lower power with 4 channels. newer chip.
-https://www.ti.com/product/AFE159RP4
+<img width="1577" height="565" alt="image" src="https://github.com/user-attachments/assets/de7ba57f-2a35-4bd1-9b80-25bb2ba2b451" />
+I generally like A, digital lines could get messy but I would rather deal with messy digital lines than messy biosignal lines. I am not sure about B -- B.1 gets pretty long. I worry that those high impedance lines could act as antennas.
 
-6-30-26 -ew
-- Added 14 pin FFC header to daughterboard schematic (Molex 52793-1470 — 14 pos, 1.0mm pitch, Right Angle). arranged pins so pin 1 & 14 are gnd to protect against open loop problems while connecting. 
+I have ordered [Medical Instrumentation: Application and Design 4e](https://a.co/d/0hpU3cl9) for further research on best practices for carrying biosignals
+## 8-18-2026 -ew
+
+Updated DB AFE to include LPF with differential cap, and added common mode cap.
+
+From ADS1298 datasheet:
+<img width="957" height="817" alt="image" src="https://github.com/user-attachments/assets/d09b4389-92da-47c2-8915-2c260e7eb1b7" />
+<img width="894" height="1094" alt="image" src="https://github.com/user-attachments/assets/3367d475-ce9a-4e9b-b1cc-07b0f4e261fa" />
+
+Diff cap (LPF) calculated with a cutoff of 1.7 kHz to be 4.7 nF with a 10kohm resistor
+Common mode cap (Ccm) was made ~10x smaller  - 270 pF.
+
+Note that these were not chosen to adhere to image 2's highlighted criteria. I should go back and check/update the specific cap type before ordering
+
+## 7-22-2026 -ew
+
+Recieved devboard and breakout for IMU
+
+## 7-20-26 -ew
+
+initilized PCB file - missing footprint to adc
+
+## 6-30-26 -ew
+- Added 14 pin FFC header to daughterboard schematic (Molex 52793-1470 — 14 pos, 1.0mm pitch, Right Angle). arranged pins so pin 1 & 14 are gnd to protect against open loop problems while connecting[...]
 - Switched from ports to netlabels for main schematic net
 Wired inputs/outputs from FFC header as follows:
 ---
@@ -47,14 +68,25 @@ MOSI_AFE    |DIN         |31
 MISO_AFE    |DOUT        |43
 --- 
 
-7-20-26 -ew
+## 6-24-26 -ew
+updaing pins:
+Pin             |Update
+--|--
+VCAP1           |22µF cap to AVSS — required
+VCAP2           |1µF cap to AVSS — required
+VCAP3           |1µF cap to AVSS — required
+VCAP4           |1µF cap to AVSS — required
+CLKSEL          |Tie high (DVDD) for internal oscillator, or low for external clockDAISY_INTie to DGND if not using daisy chain
+RESV1           |Must tie to DGND per datasheet
+PWDN            |Active low — tie high to DVDD through resistor, or control from MCU
+RESET           |Active low — pull high, control from MCU via the cable connector
+START           |Control from MCU via cable connector
+RESP_MODP/N     |Leave floating — these are ADS129xR only, not needed on ADS1298
+GPIO1-          |4Tie to DGND if unused
 
-initilized PCB file - missing footprint to adc
+setting clocksel high for now. may need to change to sync multiple adcs
 
-7-22-2026 -ew
+further considerations:
 
-Recieved devboard and breakout for IMU
-
-TODO: 
-- update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
-- figure out how to make the netlabels not upside down
+after deciding to include and ADC on the mother board to make biosignal transmission more reliable, look into AFE159RP4. Might be lower power with 4 channels. newer chip.
+https://www.ti.com/product/AFE159RP4
