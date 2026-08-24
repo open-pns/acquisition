@@ -3,6 +3,9 @@
 - update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
 - Update filter and Ccm Caps based on datasheets criteria
 
+## 8-22-2026 -ew
+- Received [medical instrumentation application and design 4th edition](https://www.amazon.com/Medical-Instrumentation-Application-John-Webster/dp/0471676004) 
+- Received [Domed snap electrodes with Ag/AgCl coating](https://datwyler.com/company/innovation/softpulse/products/) from Datwyler (Thank you Datwyler for sending these over!!)
 ## 8-19-2026 -ew
 Some thoughts on the current state of the board
 <img width="2906" height="1497" alt="image" src="https://github.com/user-attachments/assets/f8b02241-8418-4b27-831e-5ab2a7fe1a92" />
