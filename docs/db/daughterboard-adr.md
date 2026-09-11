@@ -1,19 +1,31 @@
 ## TODO:
+
 ---
+
 - update DRL PIN / add a dip switch to change between DGND (disabled) and a feedback circuit
 - Update filter and Ccm Caps based on datasheets criteria
+- ADD Power Down functionality to the ads1298 for power saving functionality.
+- Replace C2 with a more hand solderable cap
+- ground pour
+
+## 9-10-2026 -ew
+
+- Completed first pass of 2nd revision - barring poly pour for ground. Layout is much more spread out to (hopefully) help with separation for the analog signals.
 
 ## 8-22-2026 -ew
-- Received [medical instrumentation application and design 4th edition](https://www.amazon.com/Medical-Instrumentation-Application-John-Webster/dp/0471676004) 
+
+- Received [medical instrumentation application and design 4th edition](https://www.amazon.com/Medical-Instrumentation-Application-John-Webster/dp/0471676004)
 - Received [Domed snap electrodes with Ag/AgCl coating](https://datwyler.com/company/innovation/softpulse/products/) from Datwyler (Thank you Datwyler for sending these over!!)
+
 ## 8-19-2026 -ew
+
 Some thoughts on the current state of the board
 <img width="2906" height="1497" alt="image" src="https://github.com/user-attachments/assets/f8b02241-8418-4b27-831e-5ab2a7fe1a92" />
 
 1. Biosignal lines running under the IC are hard stop problems. These should be considered non functional in their current state
 2. Rerouting the signal lines out from under the IC is difficult. They could be routed around the top, but the signal lines get long, which is bad due to EMF concerns
 3. This IC's pin locations are clearly not optimized for a middle of the board application. Ideal application is something like:
-[electrodes] -> [IC] -> data connect
+   [electrodes] -> [IC] -> data connect
 4. Analog lines on the right side of the board need better isolation from data lines. ""
 5. board is 6 cm x 3 cm. Expansion to ~6 cm x 5 cm could solve a lot of these problems by giving the IC some breathing room. Layout might look silly though
 
@@ -21,6 +33,7 @@ Some thoughts on the current state of the board
 I generally like A, digital lines could get messy but I would rather deal with messy digital lines than messy biosignal lines. I am not sure about B -- B.1 gets pretty long. I worry that those high impedance lines could act as antennas.
 
 I have ordered [Medical Instrumentation: Application and Design 4e](https://a.co/d/0hpU3cl9) for further research on best practices for carrying biosignals
+
 ## 8-18-2026 -ew
 
 Updated DB AFE to include LPF with differential cap, and added common mode cap.
@@ -30,7 +43,7 @@ From ADS1298 datasheet:
 <img width="894" height="1094" alt="image" src="https://github.com/user-attachments/assets/3367d475-ce9a-4e9b-b1cc-07b0f4e261fa" />
 
 Diff cap (LPF) calculated with a cutoff of 1.7 kHz to be 4.7 nF with a 10kohm resistor
-Common mode cap (Ccm) was made ~10x smaller  - 270 pF.
+Common mode cap (Ccm) was made ~10x smaller - 270 pF.
 
 Note that these were not chosen to adhere to image 2's highlighted criteria. I should go back and check/update the specific cap type before ordering
 
@@ -43,46 +56,53 @@ Recieved devboard and breakout for IMU
 initilized PCB file - missing footprint to adc
 
 ## 6-30-26 -ew
+
 - Added 14 pin FFC header to daughterboard schematic (Molex 52793-1470 — 14 pos, 1.0mm pitch, Right Angle). arranged pins so pin 1 & 14 are gnd to protect against open loop problems while connecting[...]
 - Switched from ports to netlabels for main schematic net
-Wired inputs/outputs from FFC header as follows:
+  Wired inputs/outputs from FFC header as follows:
+
 ---
-Signal                              |Net Name        |Direction
---|--|--
-SPI clock                           |SCLK_AFE        |MCU → ADS1298
-SPI data in (to ADS1298)            |MOSI_AFE        |MCU → ADS1298
-SPI data out (from ADS1298)         |MISO_AFE        |ADS1298 → MCU
-Chip select (active low)            |~CS_AFE         |MCU → ADS1298
-Data ready interrupt (active low)   |~DRDY_AFE       |ADS1298 → MCU
-Reset (active low)                  |~RESET_AFE      |MCU → ADS1298
-Start conversion                    |START_AFE       |MCU → ADS1298
+
+| Signal                            | Net Name   | Direction     |
+| --------------------------------- | ---------- | ------------- |
+| SPI clock                         | SCLK_AFE   | MCU → ADS1298 |
+| SPI data in (to ADS1298)          | MOSI_AFE   | MCU → ADS1298 |
+| SPI data out (from ADS1298)       | MISO_AFE   | ADS1298 → MCU |
+| Chip select (active low)          | ~CS_AFE    | MCU → ADS1298 |
+| Data ready interrupt (active low) | ~DRDY_AFE  | ADS1298 → MCU |
+| Reset (active low)                | ~RESET_AFE | MCU → ADS1298 |
+| Start conversion                  | START_AFE  | MCU → ADS1298 |
+
 ---
-Signal      |Pin Name    |TQFP64 Pin #
---|--|--
-~CS_AFE     |*CS         |39
-~DRDY_AFE   |*DRDY       |47
-~RESET_AFE  |*RESET      |36
-START_AFE   |START       |38
-SCLK_AFE    |SCLK        |40
-MOSI_AFE    |DIN         |31
-MISO_AFE    |DOUT        |43
---- 
+
+| Signal     | Pin Name | TQFP64 Pin # |
+| ---------- | -------- | ------------ |
+| ~CS_AFE    | \*CS     | 39           |
+| ~DRDY_AFE  | \*DRDY   | 47           |
+| ~RESET_AFE | \*RESET  | 36           |
+| START_AFE  | START    | 38           |
+| SCLK_AFE   | SCLK     | 40           |
+| MOSI_AFE   | DIN      | 31           |
+| MISO_AFE   | DOUT     | 43           |
+
+---
 
 ## 6-24-26 -ew
+
 updaing pins:
-Pin             |Update
+Pin |Update
 --|--
-VCAP1           |22µF cap to AVSS — required
-VCAP2           |1µF cap to AVSS — required
-VCAP3           |1µF cap to AVSS — required
-VCAP4           |1µF cap to AVSS — required
-CLKSEL          |Tie high (DVDD) for internal oscillator, or low for external clockDAISY_INTie to DGND if not using daisy chain
-RESV1           |Must tie to DGND per datasheet
-PWDN            |Active low — tie high to DVDD through resistor, or control from MCU
-RESET           |Active low — pull high, control from MCU via the cable connector
-START           |Control from MCU via cable connector
-RESP_MODP/N     |Leave floating — these are ADS129xR only, not needed on ADS1298
-GPIO1-          |4Tie to DGND if unused
+VCAP1 |22µF cap to AVSS — required
+VCAP2 |1µF cap to AVSS — required
+VCAP3 |1µF cap to AVSS — required
+VCAP4 |1µF cap to AVSS — required
+CLKSEL |Tie high (DVDD) for internal oscillator, or low for external clockDAISY_INTie to DGND if not using daisy chain
+RESV1 |Must tie to DGND per datasheet
+PWDN |Active low — tie high to DVDD through resistor, or control from MCU
+RESET |Active low — pull high, control from MCU via the cable connector
+START |Control from MCU via cable connector
+RESP_MODP/N |Leave floating — these are ADS129xR only, not needed on ADS1298
+GPIO1- |4Tie to DGND if unused
 
 setting clocksel high for now. may need to change to sync multiple adcs
 
