@@ -8,6 +8,12 @@
 - Replace C2 with a more hand solderable cap
 - ground pour
 
+## 9-22-2026 - ew
+- first pass ground pour
+
+<img width="1083" height="745" alt="image" src="https://github.com/user-attachments/assets/c75e72a4-6912-4092-92c0-1e4b6f883c56" />
+
+
 ## 9-10-2026 -ew
 
 - Completed first pass of 2nd revision - barring poly pour for ground. Layout is much more spread out to (hopefully) help with separation for the analog signals.
