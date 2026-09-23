@@ -11,6 +11,7 @@
 ## 9-10-2026 -ew
 
 - Completed first pass of 2nd revision - barring poly pour for ground. Layout is much more spread out to (hopefully) help with separation for the analog signals.
+<img width="1115" height="770" alt="image" src="https://github.com/user-attachments/assets/2bce42b9-08ac-4a3d-898a-54e0c5c86742" />
 
 ## 8-22-2026 -ew
 
