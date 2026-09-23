@@ -13,12 +13,11 @@ HW:
 ---
 ## Current Layout
 
-<img width="1115" height="770" alt="image" src="https://github.com/user-attachments/assets/91e8bb75-ed81-4e31-bb99-d2b604f42ca5" />
-
+<img width="1083" height="745" alt="image" src="https://github.com/user-attachments/assets/b90d791d-1163-4c73-83d3-49f02b237c43" />
 
 
 DB PCB Progress (9-10-26) - see [docs/db/daughterboard-adr.md](./docs/db/daughterboard-adr.md) for more details.
-- no ground pour currently - need different planes for analog and digital
+- first pass ground pour (not final)
 - need to confirm power rail is within spec (max current is 1.2A)
 - Need to better organize silkscreen lettering
 
